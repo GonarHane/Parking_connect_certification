@@ -1,0 +1,21 @@
+.header{
+    background-color: #306887
+}
+.menu{
+    background-color: #306887;
+    display: none;
+}
+.icone:hover .menu{
+    display: block;
+}
+.space-x-3:hover{
+    color: #81CCB7;
+}
+.cacher{
+    display: none;
+}
+.c{
+    
+    width: 40%;
+    justify-content: space-between;
+}
