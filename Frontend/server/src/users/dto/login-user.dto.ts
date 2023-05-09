@@ -10,6 +10,5 @@ export enum Role {
 @Schema()
 export class LoginUserDto extends PickType(CreateUserDto, [
   'email',
-  'password',
-  'role',
+  'password'
 ] as const) {}

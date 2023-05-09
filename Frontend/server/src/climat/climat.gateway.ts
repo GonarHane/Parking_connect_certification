@@ -1,4 +1,4 @@
-import { ConsoleLogger } from '@nestjs/common';
+/* import { ConsoleLogger } from '@nestjs/common';
 import {
   ConnectedSocket,
   OnGatewayConnection,
@@ -15,10 +15,10 @@ import { SerialPort } from 'serialport';
 import { ReadlineParser } from '@serialport/parser-readline';
 const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 });
 
-const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }));
+const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' })); */
 /* parser.on('data', console.log); */
 
-@WebSocketGateway({ cors: true })
+/* @WebSocketGateway({ cors: true })
 export class ClimatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   logger = new ConsoleLogger();
   @WebSocketServer()
@@ -28,10 +28,10 @@ export class ClimatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   constructor(
     @InjectModel(Climat.name) private climatModel: Model<ClimatDocument>,
-  ) {}
+  ) {} */
 
   // handleConnection(){}
-  handleConnection(@ConnectedSocket() client: Socket) {
+  /* handleConnection(@ConnectedSocket() client: Socket) {
     const date = new Date();
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -93,16 +93,16 @@ export class ClimatGateway implements OnGatewayConnection, OnGatewayDisconnect {
           });
         client.emit('connection', 'climat 19h enregistré');
       }
-    });
+    }); */
     /* client.join() */
-  }
+ // }//
 
   // handleDisconnect(){}
-  handleDisconnect(@ConnectedSocket() client: any) {
+ /*  handleDisconnect(@ConnectedSocket() client: any) {
     client.leave();
   }
-
+ */
   // startMyTimer(){}
 
   // stopMyTimer(){}
-}
+//}//

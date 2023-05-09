@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Button, InputGroup } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { log } from "console";
 
 
 
@@ -16,7 +17,7 @@ const Login = () => {
         formState: { errors },
       } = useForm({ mode: "onChange" });
       const [error, setError] = useState<string>("");
-      /*  const navigate = useNavigate(); */ 
+        const navigate = useNavigate(); 
     
       const [eye, seteye] = useState<boolean>(true);
       const [password, setpassword] = useState<string>("password");
@@ -25,7 +26,9 @@ const Login = () => {
        ****************************RECUPERATION DONNEE API **********************************
        **************************************************************************************/
       const onSubmit = (data: any) => {
-        fetch("http://localhost:3001/users", {
+        console.log(data);
+        
+        fetch("http://localhost:3001/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -34,13 +37,25 @@ const Login = () => {
           },
           body: JSON.stringify({
             email: data.email,
-            mot_de_passe: data.passe,
+            password: data.passe,
           }),
         })
           .then((res) => res.json())
           .then((res) => {
-            //console.log(res);
-            if (res.correct == false) {
+            console.log(res);
+            if (res.message)
+            {
+              setError(res.message)
+              setTimeout(() => {
+                setError("")
+                
+              }, 2000);
+            }
+            else {console.log(res)
+            navigate("/Dashboard")
+            }
+            
+        /*     if (res.correct == false) {
               setError(res.message);
             } else {
               localStorage.setItem("id", res.id);
@@ -54,7 +69,7 @@ const Login = () => {
               } else {
                 usenavigate("/admin");
               } 
-            }
+            } */
           });
       };
     

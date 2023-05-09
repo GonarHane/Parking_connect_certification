@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ClimatGateway } from './climat.gateway';
+ /* import { ClimatGateway } from './climat.gateway';  */
 import { MongooseModule } from '@nestjs/mongoose';
 import { Climat, ClimatSchema } from './entities/climat.entity';
 
@@ -8,6 +8,6 @@ import { Climat, ClimatSchema } from './entities/climat.entity';
     MongooseModule.forFeature([{ name: Climat.name, schema: ClimatSchema }]),
   ],
   controllers: [],
-  providers: [ClimatGateway],
+  providers: [],
 })
 export class ClimatModule {}

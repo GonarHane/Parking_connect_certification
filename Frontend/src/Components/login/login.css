@@ -8,3 +8,6 @@
   #login-form{
     opacity: 0.85;
   }
+  .cacher{
+    display: none;
+  }

@@ -209,8 +209,8 @@ else{
                                 })}
                                 onChange={(e) => setRole(e.target.value)}>
                                 <option placeholder="Choisir un rôle"></option>
-                                <option value="administrateur" className=" text-black">Admin</option>
-                                <option value="surveillant" className=" text-black"> Utilisateur</option>
+                                <option value="admin" className=" text-black">admin</option>
+                                <option value="utilisateur" className=" text-black"> utilisateur</option>
                                 
                             </Form.Select>
                             {errors.role?.type === "required" && (
