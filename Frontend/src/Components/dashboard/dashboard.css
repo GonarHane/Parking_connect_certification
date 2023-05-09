@@ -1,0 +1,55 @@
+.titlee{
+    display: flex;
+    justify-content: center;
+    border-radius: 10px 10px 0px 0px;
+ }
+ .titl{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+ }
+ .titl{
+    background-color: #f2a007;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+   
+    }
+    h3{
+      
+        /* background-color: #35B6FF; */
+        color: white;
+       
+        width: 20%;
+        
+    }
+    .card_{
+        border: 0.5px solid rgb(159, 156, 156);
+        box-shadow:  5Px 5px rgba(171, 168, 168, 0.484);
+        padding-left:0px;
+        border-radius: 12px;
+        padding-bottom: 25px;
+       
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        
+    
+    }
+    .local{
+        height: 55vh;
+        
+    }
+   .add_{
+    margin-top: 20px;
+    margin-bottom: 20PX;
+    background-color: #f2a007;
+    
+   }
+   .liens_{
+    background-color: #f2a007;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    
+    
+   }
+   

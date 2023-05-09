@@ -25,7 +25,7 @@ const Login = () => {
        ****************************RECUPERATION DONNEE API **********************************
        **************************************************************************************/
       const onSubmit = (data: any) => {
-        fetch("", {
+        fetch("http://localhost:3001/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -3,6 +3,9 @@ import "./App.css";
 
 import Login from "./Components/login/login";
 import Header from "./Components/header/header";
+import Dashboard from "./Components/dashboard/dashboard";
+import AjoutUtilisateur from "./Components/ajout/ajoutUtilisateur";
+import ListeUtilisateur from "./Components/liste/listeUtilisateur";
 
 
 
@@ -10,8 +13,11 @@ import Header from "./Components/header/header";
 function App() {
 
   return (
-    <Header />
+    //<Header />//
     //<Login />//
+   <Dashboard/>
+   // <AjoutUtilisateur/>//
+   // <ListeUtilisateur/>//
   );
 }
 
