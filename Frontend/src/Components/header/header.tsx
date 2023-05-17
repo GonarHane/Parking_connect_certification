@@ -13,7 +13,7 @@ function Header() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [error, setError] = useState<any>("")
-        /* const navigate = useNavigate();  */ 
+         const navigate = useNavigate();  
     const {
       register,
       watch,
@@ -24,7 +24,7 @@ function Header() {
     
     const onSubmit = (data: any) => {
         console.log(data);
-         fetch(`http://localhost:3000/employes/password/${localStorage.getItem("email")}`, {
+         fetch(`http://localhost:3001/users/login${localStorage.getItem("email")}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -61,7 +61,7 @@ function Header() {
 return (
     <>
          <div className="w-full h-20 fixed-top bg-sky-500  header">
-         
+         <Link to={"/Dashboard"}>
           <div
             className={` text-white absolute ml-8 mt-4 ${
               localStorage.getItem("role") == "vigil" ? "cacher" : ""
@@ -85,11 +85,12 @@ return (
               />
             </svg>
           </div>
+          </Link>
         
-        <div className="square-full w-32 h-32 bg-orange-500 absolute shadow-md ml-24 mt-3">
-          <img src="" alt="" />
+        <div className="rounded-full w-28 h-28 bg-orange-500 absolute shadow-md ml-24 mt-3">
+          <img src="src/assets/park.png" alt="" />
         </div>
-        <div className="text-white bg-sky-500 text-lg absolute ml-60 mt-4 d-flex c">
+        <div className="text-white  text-lg absolute ml-60 mt-4 d-flex c">
            <p>
             prenom <br /> nom
           </p>

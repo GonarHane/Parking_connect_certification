@@ -30,7 +30,7 @@ export class UsersService {
     createUserDto.matricule = this.generateMatricule(5);
 
     //Assignation de la date actuelle
-    createUserDto.date_inscription = Date().toString();
+    createUserDto.date_inscription = new Date().getHours() + ':' + new Date().getMinutes() + ':'+  new Date().getSeconds();
 
     //Assignation de l'etat a 1 (actif)
     createUserDto.etat = 1;
@@ -62,8 +62,12 @@ export class UsersService {
     if (!isPasswordCorrect) {
       throw new IncorrectCredentialsException();
     }
+
+    console.log( user.email);
+    
     //connexion réussie
-    return { email: user.email, id: user._id, role: user.role };
+    return { email: user.email, id: user._id, role: user.role , prenom:user.prenom, nom:user.nom, rfid:user.rfid};
+  
   }
 
   //Recuperation de tous les utilisateur de la base
@@ -113,13 +117,16 @@ export class UsersService {
 
   //Archivage d'un utilisateur à travers matricule
   remove(id: string) {
+    console.log("bonjour")
     return this.userModel.updateOne(
+     
       { _id: id },
       {
         etat: 0,
         date_archivage: Date().toString(),
       },
     );
+    
   }
 
   //Chercher un utilisateur par son matricule

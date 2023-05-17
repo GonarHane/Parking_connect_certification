@@ -2,6 +2,9 @@ import { useState } from "react";
 import "./dashboard.css";
 import Modal from "react-bootstrap/Modal";
 import AjoutUtilisateur from "../ajout/ajoutUtilisateur";
+import Header from "../header/header";
+import { Link } from "react-router-dom";
+import pas_dispo from "../../assets/pas_dispo.svg.png";
 
 function Dashboard  () {
     const [show1, setShow1] = useState(false);
@@ -17,6 +20,10 @@ function Dashboard  () {
 
     return(
         <>
+        <div>
+        <Header></Header>
+        </div>
+        
         <div className="container  contenu_" >
             <div className="row card_">
             <div className="titlee">
@@ -25,24 +32,32 @@ function Dashboard  () {
                 <div className="col-lg-3 border border-dark ">
                     <div className="card">
                         <p>ddjdjdjjdjdjd</p>
+                        <div className="icon">
+                  <img className="imga" src={pas_dispo} alt="" />
+                </div>
                     </div>
                 </div>
 
                 <div className="col-lg-3 border border-dark">
                     <div className="card">
                     <p>ddjdjdjjdjdjd</p>
+                    <div className="icon">
+                  <img className="imga" src={pas_dispo} alt="" />
+                </div>
                     </div>
                 </div>
 
                 <div className="col-lg-3  border border-dark">
                     <div className="card">
-                    <p>ddjdjdjjdjdjdklkjlkjkkkk <br />kkkkk <br />hhhh
-                    </p>
+                    <p>ddjdjdjjdjdjdklk  </p>
+                    <div className="icon">
+                  <img className="imga" src={pas_dispo} alt="" />
+                </div>
                     </div>
                 </div>
             
             </div>
-            <div className="row card_ local">
+            <div className="row card_2 local">
             <div className="titlee">
                   <h3 className="titl">Places du parking</h3>
                 </div>
@@ -68,14 +83,22 @@ function Dashboard  () {
                     { show1 && <Modal show={show1} onHide={handleClose1}> <AjoutUtilisateur/>     </Modal>}
                     </div>
                     </div>
+                    <Link to={"/Tableaux"}>
                     <div className="card cursor-pointer text-white liens_" style={{backgroundColor:'#f2a007'}}>
                     <div className="d-flex justify-content-center add_">
-                        <p className="fw-bold">Utilisateurs actifs</p>
+                        <p className="fw-bold" onClick={handleShow2}>Utilisateurs actifs</p>
                     </div>
                     </div>
+                    </Link>
                     <div className="card cursor-pointer text-white liens_" style={{backgroundColor:'#f2a007'}}>
                     <div className="d-flex justify-content-center add_">
                         <p className="fw-bold">Utilisateurs archivés</p>
+                        <Link
+              to="tableaux"
+              className="d-flex flex-column justify-content-center align-items-center gap-2 rounded-top nav-blanc"
+            >
+             
+            </Link>
                     </div>
                     </div>
                     <div className="card cursor-pointer text-white liens_" style={{backgroundColor:'#f2a007'}}>

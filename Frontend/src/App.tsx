@@ -5,7 +5,7 @@ import Login from "./Components/login/login";
 import Header from "./Components/header/header";
 import Dashboard from "./Components/dashboard/dashboard";
 import AjoutUtilisateur from "./Components/ajout/ajoutUtilisateur";
-import ListeUtilisateur from "./Components/liste/listeUtilisateur";
+import Tableaux from "./Components/tableaux/tableaux";
 
 
 
@@ -22,6 +22,7 @@ function App() {
    <Switch>
      <Route path="/" Component={Login} />
      <Route path="/Dashboard" Component={Dashboard} />
+     <Route path="/Tableaux" Component={Tableaux}/>
      
    </Switch>
  </div>

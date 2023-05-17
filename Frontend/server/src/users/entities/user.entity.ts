@@ -23,6 +23,10 @@ export class User {
   password: string;
 
   @Prop()
+  @IsNotEmpty()
+  rfid: string;
+
+  @Prop()
   matricule: string;
 
   @Prop()

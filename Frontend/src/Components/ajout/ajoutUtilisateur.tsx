@@ -19,7 +19,7 @@ function AjoutUtilisateur() {
     const [nom, setNom] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [mdp, setMdp] = useState<string>("");
-    const [matricule, setMatricule] = useState<string>("");
+    const [rfid, setMatricule] = useState<string>("");
     const [role, setRole] = useState<string>("");
     const [errorBack, setErrorBack] = useState("");
     const [etat, setEtat] = useState<boolean>(false);
@@ -70,7 +70,7 @@ function AjoutUtilisateur() {
         formState: { errors },
     } = useForm({ mode: "onChange" });
 
-    const onSubmit = async () => {
+    const onSubmit = async (e:any) => {console.log(e)
       let headersList = {
  "Accept": "*/*",
  "User-Agent": "Thunder Client (https://www.thunderclient.com)",
@@ -78,11 +78,12 @@ function AjoutUtilisateur() {
 }
 
 let bodyContent = JSON.stringify({
-     "nom":nom,
-   "prenom":prenom,
-    "email":email,
-    "password":password,
-    "role":role
+     "nom":e.nom,
+   "prenom":e.prenom,
+    "email":e.email,
+    "password":e.password,
+    "role":e.role,
+    "rfid":e.matricule
 
     
 
@@ -183,8 +184,8 @@ else{
                         <Form.Group>
                             <Form.Label>Matricule</Form.Label>
                             <Form.Control
-                                id="matricule"
-                                value={matricule}
+                                id="rfid"
+                                value={rfid}
                                 type="text"
                                 placeholder="347768900987"
                                 {...register("matricule", {

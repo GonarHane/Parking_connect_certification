@@ -34,6 +34,8 @@ const Login = () => {
             "Content-Type": "application/json",
             Accept: "application/json",
             "Access-Control-Allow-Origin": "*",
+
+            
           },
           body: JSON.stringify({
             email: data.email,
@@ -52,10 +54,17 @@ const Login = () => {
               }, 2000);
             }
             else {console.log(res)
+              localStorage.setItem("id", res.id);
+              localStorage.setItem("email", res.email);
+              localStorage.setItem("role", res.role);
+              localStorage.setItem("prenom", res.prenom);
+              localStorage.setItem("nom", res.nom);
+              localStorage.setItem("rfid", res.rfid);
+
             navigate("/Dashboard")
             }
             
-        /*     if (res.correct == false) {
+            if (res.correct == false) {
               setError(res.message);
             } else {
               localStorage.setItem("id", res.id);
@@ -64,12 +73,9 @@ const Login = () => {
               localStorage.setItem("prenom", res.prenom);
               localStorage.setItem("nom", res.nom);
               localStorage.setItem("email", res.email);
-              if (localStorage.getItem("role") == "user") {
-                usenavigate("/user");
-              } else {
-                usenavigate("/admin");
-              } 
-            } */
+              localStorage.setItem("rfid", res.rfid);
+              navigate ("/Dashboard")
+            } 
           });
       };
     

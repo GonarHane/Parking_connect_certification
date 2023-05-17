@@ -1,3 +1,84 @@
+import { ConsoleLogger } from "@nestjs/common";
+import {
+  ConnectedSocket,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+  WebSocketGateway,
+  WebSocketServer,
+} from "@nestjs/websockets";
+import { Socket } from "socket.io";
+import { Server } from "ws";
+
+import { SerialPort } from "serialport";
+import { ReadlineParser } from "@serialport/parser-readline";
+
+const port = new SerialPort({
+  path: "/dev/ttyS4",
+  baudRate: 9600,
+  dataBits: 8,
+  parity: "none",
+  stopBits: 1,
+ 
+});
+
+const parser = port.pipe(new ReadlineParser({ delimiter: "\r\n" }));
+parser.on("data", console.log);
+port.write("cool");
+parser.write("cool");
+
+
+@WebSocketGateway({ cors: true })
+export class ClimatGateway implements OnGatewayConnection, OnGatewayDisconnect {
+  logger = new ConsoleLogger();
+  fanOn = "0";
+  @WebSocketServer()
+  public server: Server;
+
+  public socket: Socket;
+
+  /*   constructor(@InjectModel(Climat.name) private climatModel: Model<Climat>) {} */
+
+  handleConnection(@ConnectedSocket() client: Socket) {
+  
+
+    client.on("fanOn", (onData) => {
+      port.write(onData);
+      this.fanOn = onData;
+      
+    });
+    client.on("fanOff", (offData) => {
+      this.fanOn = offData;
+    });
+
+    parser.on("data", (data) => {
+      port.write(this.fanOn);
+     
+
+      port.drain((err) => {
+       
+      });
+      this.logger.log(this.fanOn);
+      const climat = {
+        
+        numero: data.split("/")[2],
+        p1disponible: data.split("/")[3],
+        p2disponible: data.split("/")[4],
+        p3disponible: data.split("/")[5],
+        luminosite: data.split("/")[6],
+        gaz: data.split("/")[7],
+        
+      };
+     
+    });
+  }
+
+  handleDisconnect(@ConnectedSocket() client: any) {
+    client.leave();
+  }
+}
+
+
+
 /* import { ConsoleLogger } from '@nestjs/common';
 import {
   ConnectedSocket,
@@ -106,3 +187,4 @@ export class ClimatGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   // stopMyTimer(){}
 //}//
+
